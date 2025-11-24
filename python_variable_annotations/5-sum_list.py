@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
-
-from typing import List
-
 '''5-sum_list.py Script that returns the sum of of a list'''
+from typing import List
 
 
 def sum_list(input_list: List[float]) -> float:
