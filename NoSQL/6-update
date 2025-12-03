@@ -1,0 +1,2 @@
+// Script that update the documents based on a critera in Mongodb
+db.school.updateMany({"name":"Holberton school"}, {$set : {address : "972 Mission street"}})
