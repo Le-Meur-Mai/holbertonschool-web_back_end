@@ -8,5 +8,6 @@ export default async function handleProfileSignup (firstName, lastName, fileName
       result.value = result.reason;
       delete result.reason;
     }
+    return result;
   });
 }
