@@ -4,5 +4,5 @@ process.stdin.on('data', (data) => {
   console.log(`Your name is: ${name}`);
 });
 process.on('beforeExit', () => {
-    console.log('This important software is now closing');
-  });
+  console.log('This important software is now closing');
+});
