@@ -42,7 +42,7 @@ async function countStudents(path) {
 }
 
 app.get('/', (request, response) => {
-  response.set('Content-Type', 'text/html');
+  response.set('Content-Type', 'text/plain');
   response.send('Hello Holberton School!');
 });
 
