@@ -42,17 +42,17 @@ async function countStudents(path) {
 }
 
 app.get('/', (request, response) => {
-  response.setHeader('Content-Type', 'text/plain');
+  response.set('Content-Type', 'text/plain');
   response.send('Hello Holberton School!');
 });
 
 app.get('/students', async (request, response) => {
-  response.setHeader('Content-Type', 'text/plain');
+  response.set('Content-Type', 'text/plain');
   try {
     const result = await countStudents(process.argv[2]);
     response.send(`This is the list of our students\n${result}`);
   } catch (error) {
-    response.setHeader('Content-Type', 'text/plain');
+    response.set('Content-Type', 'text/plain');
     response.send('Cannot load the database');
   }
 });
