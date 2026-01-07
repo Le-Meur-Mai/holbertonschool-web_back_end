@@ -49,7 +49,8 @@ const app = http.createServer(async (req, response) => {
     try {
       const result = await countStudents(process.argv[2]);
       response.writeHead(200, { 'content-type': 'text/plain' });
-      response.end(`This is the list of our students\n${result}`);
+      response.write(`This is the list of our students\n${result}`);
+      response.end();
     } catch (err) {
       response.writeHead(400, { 'content-type': 'text/plain' });
       response.end('Cannot load the database');
