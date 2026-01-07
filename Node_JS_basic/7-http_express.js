@@ -35,7 +35,7 @@ async function countStudents(path) {
       // On fait une string avec tous les nom des eleves separe par une virgule
       result += (`Number of students in ${domain}: ${students[domain].length}. List: ${listStudent}\n`);
     }
-    return (result.trimEnd() + '\n');
+    return (result.trimEnd());
   } catch (err) {
     throw new Error('Cannot load the database');
   }
@@ -47,7 +47,7 @@ app.get('/', (request, response) => {
 });
 
 app.get('/students', async (request, response) => {
-  response.set('Content-Type', 'text/plain');
+  response.setHeader('Content-Type', 'text/plain');
   try {
     const result = await countStudents(process.argv[2]);
     response.send(`This is the list of our students\n${result}`);
