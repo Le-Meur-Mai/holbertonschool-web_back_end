@@ -30,12 +30,10 @@ async function countStudents(path) {
       /* Dans l'objet students on ajoute des fields si ils ne sont pas deja là,
       et on ajoute le nom de l'eleve a la field correspondante */
     }
-    for (const domain in students) {
-      if (Object.prototype.hasOwnProperty.call(students, domain)) {
-        const listStudent = students[domain].join(', ');
-        // On fait une string avec tous les nom des eleves separe par une virgule
-        result += (`Number of students in ${domain}: ${students[domain].length}. List: ${listStudent}\n`);
-      }
+    for (const domain of Object.keys(students).sort()) {
+      const listStudent = students[domain].join(', ');
+      // On fait une string avec tous les nom des eleves separe par une virgule
+      result += (`Number of students in ${domain}: ${students[domain].length}. List: ${listStudent}\n`);
     }
     return (result.trimEnd());
   } catch (err) {
@@ -49,12 +47,12 @@ app.get('/', (request, response) => {
 });
 
 app.get('/students', async (request, response) => {
-  response.set('Content-Type', 'text/html');
+  response.set('Content-Type', 'text/plain');
   try {
     const result = await countStudents(process.argv[2]);
     response.send(`This is the list of our students\n${result}`);
   } catch (error) {
-    response.set('Content-Type', 'text/html');
+    response.set('Content-Type', 'text/plain');
     response.send('Cannot load the database');
   }
 });
