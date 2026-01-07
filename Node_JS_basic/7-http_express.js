@@ -35,14 +35,14 @@ async function countStudents(path) {
       // On fait une string avec tous les nom des eleves separe par une virgule
       result += (`Number of students in ${domain}: ${students[domain].length}. List: ${listStudent}\n`);
     }
-    return (result.trimEnd());
+    return (result.trimEnd() + '\n');
   } catch (err) {
     throw new Error('Cannot load the database');
   }
 }
 
 app.get('/', (request, response) => {
-  response.set('Content-Type', 'text/plain');
+  response.setHeader('Content-Type', 'text/plain');
   response.send('Hello Holberton School!');
 });
 
@@ -52,7 +52,7 @@ app.get('/students', async (request, response) => {
     const result = await countStudents(process.argv[2]);
     response.send(`This is the list of our students\n${result}`);
   } catch (error) {
-    response.set('Content-Type', 'text/plain');
+    response.setHeader('Content-Type', 'text/plain');
     response.send('Cannot load the database');
   }
 });
